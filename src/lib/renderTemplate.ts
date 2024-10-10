@@ -4,7 +4,7 @@ export async function renderTemplate(
     JinjaTemplate: string
   ): Promise<{ error: boolean; message: string }> {
     try {
-      const postRequest = await fetch("http://192.168.254.93:8000/api", {
+      const postRequest = await fetch("/api", {
         headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify({

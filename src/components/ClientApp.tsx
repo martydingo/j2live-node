@@ -19,8 +19,6 @@ export default function ClientApp() {
   });
 
   async function handleEditorChange(editorName: string, editorContent: string) {
-    console.log(`${editorName}: ${editorContent}`);
-
     setEditorData((prevState) => ({
       ...prevState,
       [editorName]: editorContent,
