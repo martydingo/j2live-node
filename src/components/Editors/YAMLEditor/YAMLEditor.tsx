@@ -9,10 +9,13 @@ import Editor from "@monaco-editor/react";
 
 export default function YAMLEditor({
   editorData,
-  handleEditorChange,
+  handleEditorChange
 }: {
-  editorData: { YAMLEditor: string; };
-  handleEditorChange: (editorContent: string, editorName: string) => void;
+  editorData: {
+    YAMLEditor: string;
+    JinjaEditor: string;
+  },
+  handleEditorChange:  (editorName: any, editorContent: any) => void
 }) {
   const editorRef = useRef(null);
   /* eslint @typescript-eslint/no-explicit-any: 0 */
@@ -54,9 +57,7 @@ export default function YAMLEditor({
         defaultLanguage="yaml"
         value={editorData.YAMLEditor}
         onMount={handleEditorDidMount}
-        onChange={(editorContent) =>
-          handleEditorChange(editorContent!, "YAMLEditor")
-        }
+        onChange={(editorContent) => handleEditorChange("YAMLEditor", editorContent!)}
       />
     </>
   );

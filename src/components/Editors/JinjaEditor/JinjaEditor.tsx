@@ -13,11 +13,14 @@ export default function JinjaEditor({
   editorData,
   handleEditorChange,
 }: {
-  editorData: { JinjaEditor: string };
-  handleEditorChange: (editorContent: string, editorName: string) => void;
+  editorData: {
+    YAMLEditor: string;
+    JinjaEditor: string;
+  };
+  handleEditorChange: (editorName: any, editorContent: any) => void;
 }) {
   const editorRef = useRef(null);
-  
+
   /* eslint @typescript-eslint/no-explicit-any: 0 */
   function handleEditorDidMount(editor: any, monaco: any) {
     // here is the editor instance
@@ -35,11 +38,11 @@ export default function JinjaEditor({
       shikiToMonaco(highlighter, monaco);
     });
 
-    monaco_theme_halcyon()
-    monaco.editor.setTheme("Halcyon")
+    monaco_theme_halcyon();
+    monaco.editor.setTheme("Halcyon");
     editor.updateOptions({
-      fontSize: 14
-    })
+      fontSize: 14,
+    });
   }
 
   return (
@@ -59,11 +62,9 @@ export default function JinjaEditor({
       <Editor
         height="90vh"
         defaultLanguage="jinja"
-        value={editorData.JinjaEditor}      
+        value={editorData.JinjaEditor}
         onMount={handleEditorDidMount}
-        onChange={(editorContent) =>
-          handleEditorChange(editorContent!, "JinjaEditor")
-        }
+        onChange={(editorContent) => handleEditorChange("JinjaEditor", editorContent!)}
       />
     </>
   );

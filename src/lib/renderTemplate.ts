@@ -1,9 +1,10 @@
+"use server"
 export async function renderTemplate(
     yamlVariables: string,
     JinjaTemplate: string
   ): Promise<{ error: boolean; message: string }> {
     try {
-      const postRequest = await fetch("/api", {
+      const postRequest = await fetch("http://192.168.254.93:8000/api", {
         headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify({
@@ -27,3 +28,4 @@ export async function renderTemplate(
       };
     }
   }
+

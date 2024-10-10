@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.258",
+    "@iconify/react": "^5.0.2",
     "@mantine/core": "^7.13.2",
     "@mantine/hooks": "^7.13.2",
     "@monaco-editor/react": "^4.6.0",
@@ -17,11 +17,10 @@
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "monaco-editor-core": "^0.52.0",
-    "next": "15.0.0-canary.182",
-    "react": "19.0.0-rc-2d16326d-20240930",
-    "react-dom": "19.0.0-rc-2d16326d-20240930",
-    "shiki": "^1.22.0",
-    "unplugin-icons": "^0.19.3"
+    "next": "^14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "shiki": "^1.22.0"
   },
   "devDependencies": {
     "@types/node": "^20",

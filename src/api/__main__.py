@@ -18,9 +18,9 @@ async def main():
 
 async def run_frontend():
     if args.environment == "production":
-        subprocess.Popen(["bun", "run", "dev"])
+        subprocess.Popen(["bun", "run", "start"])
     elif args.environment == "development":
-        #"bun x http-server --port 4173"
+        # "bun x http-server --port 4173"
         subprocess.Popen(["bun", "dev"])
 
 
