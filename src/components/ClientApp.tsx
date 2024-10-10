@@ -12,6 +12,7 @@ import TemplatePreview from "./TemplatePreview/TemplatePreview";
 
 export default function ClientApp() {
   const [errorState, setErrorState] = useState("");
+  const [generatedTemplate, setGeneratedTemplate] = useState("");
   const [editorData, setEditorData] = useState({
     YAMLEditor: "",
     JinjaEditor: "",
@@ -37,19 +38,16 @@ export default function ClientApp() {
         editorContent
       );
     }
-    const outputElement = document.getElementById("TemplatePreview");
-    console.log(outputElement)
 
-    Promise.all([generateTemplatePromise]).then(([generatedTemplate]) => {
-      if (generatedTemplate.error == false) {
-        setErrorState(generatedTemplate.error as unknown as string);
+    Promise.all([generateTemplatePromise]).then(([generateTemplateResult]) => {
+      if (generateTemplateResult.error == false) {
+        setErrorState(generateTemplateResult.error as unknown as string);
       } else {
         setErrorState(
-          generatedTemplate.message.toString() as unknown as string
+            generateTemplateResult.message.toString() as unknown as string
         );
       }
-      outputElement!.innerText = generatedTemplate.message as unknown as string;
-      console.log(generatedTemplate);
+      setGeneratedTemplate(generateTemplateResult.message as unknown as string)
     });
   }
 
@@ -100,7 +98,9 @@ export default function ClientApp() {
               maxHeight: "90vh",
             }}
           >
-            <TemplatePreview errorState={errorState} />
+            <TemplatePreview 
+            generatedTemplate={generatedTemplate}
+            errorState={errorState} />
           </Flex>
         </Flex>
       </TypographyStylesProvider>

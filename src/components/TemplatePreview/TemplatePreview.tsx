@@ -4,8 +4,10 @@ import { Textarea } from "@mantine/core";
 
 export default function TemplatePreview({
   errorState,
+  generatedTemplate
 }: {
   errorState: string;
+  generatedTemplate: string;
 }) {
   return (
     <>
@@ -27,6 +29,7 @@ export default function TemplatePreview({
         autosize
         error={errorState || false}
         size="md"
+        value={generatedTemplate}
         disabled
       />
     </>
