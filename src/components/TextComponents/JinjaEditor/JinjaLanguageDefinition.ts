@@ -428,6 +428,7 @@ const MonacoJinjaLanguageDefinition = <ILanguage>{
     }
   };
 
+/* eslint @typescript-eslint/no-explicit-any: 0 */
 export default function defineMonacoJinjaLanguage(monaco: any) {
   monaco.languages.register({
     id: "jinja",

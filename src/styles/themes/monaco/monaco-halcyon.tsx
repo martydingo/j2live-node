@@ -1,3 +1,5 @@
+'use client'
+
 import * as monaco from "monaco-editor-core";
 
 export default function monaco_theme_halcyon() {

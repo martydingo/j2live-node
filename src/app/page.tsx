@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { mantine_theme_halcyon } from "@/styles/themes/mantine/halcyon";
-//@ts-ignore
+//@ts-expect-error Iconfiy Plugin
 import FileIconsJinja from "~icons/file-icons/jinja.jsx";
 import YAMLEditor from "@/components/TextComponents/YAMLEditor/YAMLEditor";
 import JinjaEditor from "@/components/TextComponents/JinjaEditor/JinjaEditor";

@@ -15,7 +15,7 @@ export default function YAMLEditor({
   handleEditorChange: (editorContent: string, editorName: string) => void;
 }) {
   const editorRef = useRef(null);
-
+  /* eslint @typescript-eslint/no-explicit-any: 0 */
   function handleEditorDidMount(editor: any, monaco: any) {
     // here is the editor instance
     // you can store it in `useRef` for further usage
