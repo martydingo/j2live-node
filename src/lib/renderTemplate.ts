@@ -4,7 +4,7 @@ export async function renderTemplate(
     JinjaTemplate: string
   ): Promise<{ error: boolean; message: string }> {
     try {
-      const postRequest = await fetch("https://j2live.dingo.foo/api", {
+      const postRequest = await fetch("https://j2live.dingo.foo/api", {  
         headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify({
