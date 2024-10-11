@@ -4,7 +4,8 @@ import shiki_halcyon from "@/styles/themes/shiki-halcyon";
 // import { Textarea } from "@mantine/core";
 import { Editor } from "@monaco-editor/react";
 import { shikiToMonaco } from "@shikijs/monaco";
-import { useRef } from "react";
+import flourite from "flourite";
+import { useEffect, useRef } from "react";
 import { createHighlighter, ThemeRegistration } from "shiki";
 
 export default function TemplatePreview({
@@ -20,23 +21,71 @@ export default function TemplatePreview({
     // here is the editor instance
     // you can store it in `useRef` for further usage
     editorRef.current = editor;
+    monaco.languages.register({ id: "c" });
+    monaco.languages.register({ id: "dockerfile" });
+    monaco.languages.register({ id: "javascript" });
+    monaco.languages.register({ id: "pascal" });
+    monaco.languages.register({ id: "sql" });
+    monaco.languages.register({ id: "c++" });
+    monaco.languages.register({ id: "elixir" });
+    monaco.languages.register({ id: "julia" });
+    monaco.languages.register({ id: "php" });
     monaco.languages.register({ id: "yaml" });
+    monaco.languages.register({ id: "c#" });
+    monaco.languages.register({ id: "go" });
+    monaco.languages.register({ id: "kotlin" });
+    monaco.languages.register({ id: "python" });
+    monaco.languages.register({ id: "typescript" });
+    monaco.languages.register({ id: "clojure" });
+    monaco.languages.register({ id: "html" });
+    monaco.languages.register({ id: "lua" });
+    monaco.languages.register({ id: "ruby" });
+    monaco.languages.register({ id: "css" });
+    monaco.languages.register({ id: "java" });
+    monaco.languages.register({ id: "markdown" });
+    monaco.languages.register({ id: "rust" });
     const highlighter = createHighlighter({
       themes: [shiki_halcyon] as ThemeRegistration[],
-      langs: ["yaml"],
+      langs: [
+        "c",
+        "dockerfile",
+        "javascript",
+        "pascal",
+        "sql",
+        "c++",
+        "elixir",
+        "julia",
+        "php",
+        "yaml",
+        "c#",
+        "go",
+        "kotlin",
+        "python",
+        "typescript",
+        "clojure",
+        "html",
+        "lua",
+        "ruby",
+        "css",
+        "java",
+        "markdown",
+        "rust",
+      ],
     });
 
     editor.updateOptions({
       fontSize: 14,
-      readOnly: true
+      readOnly: true,
     });
 
     Promise.all([highlighter]).then(([highlighter]) => {
       shikiToMonaco(highlighter, monaco);
     });
-    
   }
-  console.log(generatedTemplate)
+
+  const codeLanguageMeta = flourite(generatedTemplate);
+  console.log(codeLanguageMeta.language);
+
   return (
     <>
       {/* <Textarea
@@ -79,6 +128,7 @@ export default function TemplatePreview({
         height={window.visualViewport!.height}
         onMount={handleEditorDidMount}
         value={generatedTemplate}
+        language={codeLanguageMeta.language.toLowerCase()}
         // defaultLanguage="yaml"
       />
     </>
