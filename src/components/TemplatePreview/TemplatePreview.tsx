@@ -5,7 +5,7 @@ import shiki_halcyon from "@/styles/themes/shiki-halcyon";
 import { Editor } from "@monaco-editor/react";
 import { shikiToMonaco } from "@shikijs/monaco";
 import flourite from "flourite";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { createHighlighter, ThemeRegistration } from "shiki";
 
 export default function TemplatePreview({
